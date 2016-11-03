@@ -1,45 +1,7 @@
-# import httplib2
-# from BeautifulSoup import BeautifulSoup, SoupStrainer
-#
-# http = httplib2.Http()
-# status, response = http.request('http://www.nytimes.com')
-#
-# for link in BeautifulSoup(response, parseOnlyThese = SoupStrainer('a')):
-#     if link.has_attr('href'):
-#         print link['href']
-
-# import urllib
-# import lxml.html
-#
-# connection = urllib.urlopen('ftp://cdiac.ornl.gov/pub')
-#
-#
-# dom = lxml.html.fromstring(connection.read())
-#
-#
-# for link in dom.xpath('//a/@href'):
-#     print(link)
-
 from ftplib import FTP
 import os, sys, os.path
+import quickstart
 
-#ianData
-# ddir = '/home/tyler/ianData/'
-# os.chdir(ddir)
-# ftp = FTP('cdiac.ornl.gov')
-# ftp.login()
-# ftp.cwd('/pub')
-#
-# filenames = ftp.nlst()
-# print filenames
-#
-# for filename in filenames:
-#     local_filename = os.path.join('/ianData/', filename)
-#     file = open(local_filename, 'wb')
-#     ftp.retrbinary('RETR ' + filename, file.write)
-#
-#     file.close()
-#ftp.quit()
 
 #### GET ALL FROM ALL SUBDIRECTORIES #####
 from ftplib import FTP
@@ -53,9 +15,12 @@ def get_dirs_ftp(folder=""):
         for item in contents:
             if "." not in item:
                 folders.append(item)
+                quickstart.extract(item, ftp)
         return folders
     except timeout:
-        print("Caught a timeout, type 1")
+        print("Caught Timeout. Type 1.")
+
+
 
 
 
@@ -66,21 +31,24 @@ def get_all_dirs_ftp(folder=""):
 
         new_dirs = get_dirs_ftp(folder)
 
-        while len(new_dirs) > 0:
-            for dir in new_dirs:
-                dirs.append(dir)
+        cats = 0
+        while (len(new_dirs) > 0) and (cats<10):
+                for dir in new_dirs:
+                    dirs.append(dir)
+                old_dirs = new_dirs[:]
+                new_dirs = []
+                for dir in old_dirs:
+                    for new_dir in get_dirs_ftp(dir):
+                        new_dirs.append(new_dir)
+                        cats += 1
+                        print("meow")
 
-            old_dirs = new_dirs[:]
-            new_dirs = []
-            for dir in old_dirs:
-                for new_dir in get_dirs_ftp(dir):
-                    new_dirs.append(new_dir)
 
         dirs.sort()
         return dirs
 
     except timeout:
-        print("caught timeout, type 2")
+        print("Caught Timeout. Type 2.")
 
 
 host ="cdiac.ornl.gov"
@@ -101,3 +69,8 @@ for dir in all_dirs:
     print(dir)
 
 
+
+
+def extract(directory):
+
+    exit()
