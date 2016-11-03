@@ -1,7 +1,7 @@
 import os
 import glob
 
-outputfile = "/home/ubuntu/ianData/output"
+outputfile = "/home/ubuntu/cdiac_scraper/"
 
 #Creates header row of output csv file
 with open(outputfile, 'a') as summary:
@@ -9,7 +9,7 @@ with open(outputfile, 'a') as summary:
 
 #Loop walks through all files of designated extension
 #and writes new line to output csv file
-for file in glob.glob(r'/home/ubuntu/cdiac.ornl.gov/pub/'):
+for file in glob.glob(r'/home/ubuntu/cdiac.ornl.gov/pub/*'):
     filename = os.path.basename(file)
     filesize = os.path.getsize(file)
 
