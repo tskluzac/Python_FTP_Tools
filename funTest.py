@@ -1,7 +1,7 @@
 import os
 import glob
 
-outputfile = "/home/ubuntu/cdiac_scraper/ianTracker5"
+outputfile = "/home/ubuntu/cdiac_scraper/ianTracker6"
 
 #Creates header row of output csv file
 with open(outputfile, 'a') as summary:
