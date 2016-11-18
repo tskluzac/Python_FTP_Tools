@@ -1,1 +1,11 @@
-Hello, it's me. 
+This repository contains a series of tools to analyze and download (pull) data from FTP servers.  
+
+Scraper3 is the main class that allows a user to pull all filepaths and accompanying file sizes (in bytes) from the FTP
+server. A user must add their host, login (user and pass), and download location in order to scan files. The user must also
+uncomment #PART B# if they wish to download the files in addition to simply scanning them.  
+
+Send_To_CSV is a sub-class that allows a user to write the results of an FTP scan to a CSV file.  Currently adding 
+implementations to do so directly to a Google Doc. 
+
+The first usage of Python_FTP_Tools was to scrape the carbon data from ftp://cdiac.ornl.gov.  This is a public FTP server 
+that serves as an excellent sandbox for FTP-tool testing.  
