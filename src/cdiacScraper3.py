@@ -1,7 +1,7 @@
-from ftplib import *
-import send_to_csv
 import os
+from ftplib import *
 
+import send_to_csv
 
 """
     This ftp_scraper will create a path-directory of all files and filesizes in given FTP server.
@@ -120,20 +120,21 @@ print("Logged in :)")
 ### Broken into bits::: For local machines with weak recursive depths (<1500ish)
 ### Don't run the previous one unless you are for-certain using a muscular computer.
 
-download_ftp_tree(ftp,'/pub2/' , '/home/tskluzac/Downloads/')
-download_ftp_tree(ftp,'/pub3/' , '/home/tskluzac/Downloads/')
-download_ftp_tree(ftp,'/pub4/' , '/home/tskluzac/Downloads/')
-download_ftp_tree(ftp,'/pub5/' , '/home/tskluzac/Downloads/')
-download_ftp_tree(ftp,'/pub6/' , '/home/tskluzac/Downloads/')
+#download_ftp_tree(ftp,'/pub2/' , '/home/tskluzac/Downloads/')
+#download_ftp_tree(ftp,'/pub3/' , '/home/tskluzac/Downloads/')
+#download_ftp_tree(ftp,'/pub4/' , '/home/tskluzac/Downloads/')
+#download_ftp_tree(ftp,'/pub5/' , '/home/tskluzac/Downloads/')
+#download_ftp_tree(ftp,'/incoming/' , '/home/tskluzac/Downloads/')
+#download_ftp_tree(ftp,'/key/' , '/home/tskluzac/Downloads/')
 download_ftp_tree(ftp,'/pub7/' , '/home/tskluzac/Downloads/')
 download_ftp_tree(ftp,'/pub8/' , '/home/tskluzac/Downloads/')
 download_ftp_tree(ftp,'/pub9/' , '/home/tskluzac/Downloads/')
 download_ftp_tree(ftp,'/pub10/' , '/home/tskluzac/Downloads/')
 download_ftp_tree(ftp,'/pub11/' , '/home/tskluzac/Downloads/')
 download_ftp_tree(ftp,'/pub12/' , '/home/tskluzac/Downloads/')
-download_ftp_tree(ftp,'/incoming/' , '/home/tskluzac/Downloads/')
-download_ftp_tree(ftp,'/key/' , '/home/tskluzac/Downloads/')
 download_ftp_tree(ftp,'/pub/' , '/home/tskluzac/Downloads/')
+download_ftp_tree(ftp,'/pub6/' , '/home/tskluzac/Downloads/')
+
 
 
 #print(path_size_holder)
