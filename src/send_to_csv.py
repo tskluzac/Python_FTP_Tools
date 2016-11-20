@@ -2,12 +2,13 @@ import os
 import glob
 import random
 
-randomNum = str(random.randint(0,200000))
-outputfile = "/home/tskluzac/PycharmProjects/CDIAC_scraper/cdiac_site"+randomNum
 
+def  writer(filepath_size_array, path):
 
+    outputfile = "/home/tskluzac/PycharmProjects/CDIAC_scraper/cdiac_site_"
 
-def  writer(filepath_size_array):
+    path = path.replace("/","")
+
     with open(outputfile, 'a') as summary:
         summary.write(str("File Path") + ',' + str("FileSize") + '\n')
 
@@ -17,8 +18,9 @@ def  writer(filepath_size_array):
             filesize = item[1]
             print(filesize)
 
-            with open(outputfile +'.csv', 'a') as summary:
+            with open(outputfile + path + '.csv', 'a') as summary:
                 summary.write(str(filename) + ',' +
                           str(filesize) + '\n')
-    print("CSV Finished")
+
+    print("CSV " + outputfile + " Finished")
 
