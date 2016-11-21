@@ -4,6 +4,8 @@ from ftplib import *
 import send_to_csv
 import random
 
+#TODO: Checksums and Local-Downloading (AWS instance?)
+
 """
     This ftp_scraper will create a path-directory of all files and filesizes in given FTP server.
     Code can be uncommented to (1) do in a single recursive swath, and (2) actually download files
@@ -12,10 +14,8 @@ import random
     Author: Tyler J. Skluzacek, University of Chicago
     Email: skluzacek@uchicago.edu
     Github: tskluzac
-    Last Edited: 11/18/2016
+    Last Edited: 11/21/2016
 """
-
-
 
 
 
