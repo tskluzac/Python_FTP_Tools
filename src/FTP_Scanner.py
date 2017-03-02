@@ -38,16 +38,16 @@ def _is_ftp_dir(ftp_handle, name, guess_by_extension=True):
 
 
 def _make_parent_dir(fpath):
-    print("Initializing: Checking parent-child/directory-subdirectory relationship...")
     """ Does path (given a file) actually exist? """
     dirname = os.path.dirname(fpath)
     while not os.path.exists(dirname):
-        print("Doing A-b")
         try:
             os.mkdir(dirname)
             print("created {0}".format(dirname))
+            print("pass")
         except:
             _make_parent_dir(dirname)
+            print("fail")
 
 
 
@@ -63,6 +63,7 @@ def _download_ftp_file(ftp_handle, name, dest, overwrite, path_size_holder):
     except:
         pass
 
+    print('made it here')
     ### PART B ###
     # """ downloads a single file from an ftp server """
     # _make_parent_dir(dest)
@@ -126,8 +127,9 @@ print("Logged in :)")
 ### Broken into bits::: For local machines with weak recursive depths (<1500ish)
 ### Don't run the previous one unless you are for-certain using a muscular computer.
 
-download_ftp_tree(ftp,'/pub6/oceans/2nd_QC_Tool/refdata/' , '/home/tskluzac/Downloads/')
-download_ftp_tree(ftp,'/pub6/oceans/2nd_QC_Tool/example/' , '/home/tskluzac/Downloads/')
+download_ftp_tree(ftp,'/pub8/' , '/home/tskluzac/Downloads/')
+#download_ftp_tree(ftp,'/pub6/oceans/save/' , '/home/tskluzac/Downloads/')
+
 
 
 
