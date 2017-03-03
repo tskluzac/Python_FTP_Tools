@@ -4,11 +4,12 @@ import traceback, globus_sdk
 from hashlib import sha256
 from re import compile
 
-
+# This is not needed after first login.
 CLIENT_ID = 'a4eb161f-7c0f-486e-ad06-28cc3bf01ce8'
 
-#PETREL_ID = ""
-
+### Should move these to System Vars for security.
+AUTH_TOKEN = "AQBYuyQ6AAAAAAAEj5ZMjnWX8k8IXuuJUIGqwA-8s1ETu2Y1zf0MB-q7clGlPEv2KfUNMQArEENZepeTM-Vc"
+TRANSFER_TOKEN = "AQBYuyQ6AAAAAAAEj5cXufToCARHFXBMQrBSCN3ODpmGssRRYqXsNDKHyHnq1_HjTgUUu-1ZsBrPe-79ePMY"
 
 def get_tokens():
 
@@ -34,15 +35,11 @@ def get_tokens():
     print("Copy this into AUTH_TOKEN Field: " + AUTH_TOKEN)
     print("Copy this into TRANSFER_TOKEN Field: " + TRANSFER_TOKEN)
 
-### Should move these to System Vars for security.
-AUTH_TOKEN = "AQBYuyQ6AAAAAAAEj5ZMjnWX8k8IXuuJUIGqwA-8s1ETu2Y1zf0MB-q7clGlPEv2KfUNMQArEENZepeTM-Vc"
-TRANSFER_TOKEN = "AQBYuyQ6AAAAAAAEj5cXufToCARHFXBMQrBSCN3ODpmGssRRYqXsNDKHyHnq1_HjTgUUu-1ZsBrPe-79ePMY"
-
 ### Get Globus-Client which checks against the TRANSFER_TOKEN --- Allows us to make transfers
 def get_globus_client():
     authorizer = globus_sdk.AccessTokenAuthorizer(TRANSFER_TOKEN)
     tc = globus_sdk.TransferClient(authorizer=authorizer)
-    print(tc)
+    print("Globus Client ACTIVE at address ", tc)
     return tc
 
 # Ensure that your local endpoint is in this list. Otherwise your transfer will fail.
@@ -50,7 +47,5 @@ def get_my_endpoints():
     for ep in (get_globus_client()).endpoint_search(filter_scope="my-endpoints"):
         print("[{}] {}".format(ep["id"], ep["display_name"]))
 
-
-
 #get_globus_client()
-#get_my_endpoints()
+get_my_endpoints()
