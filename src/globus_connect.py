@@ -1,8 +1,5 @@
 from __future__ import print_function
-import os, time, csv
-import traceback, globus_sdk
-from hashlib import sha256
-from re import compile
+import globus_sdk
 
 # This is not needed after first login.
 CLIENT_ID = 'a4eb161f-7c0f-486e-ad06-28cc3bf01ce8'
@@ -49,7 +46,7 @@ def get_my_endpoints():
 
 
 ### Step 1: Run this to see if everything is working okay. Should see list of endpoints.
-#get_my_endpoints()
+get_my_endpoints()
 
 
 ### Step 2: IF NOT, run this and follow the included steps.
