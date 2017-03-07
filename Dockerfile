@@ -4,9 +4,9 @@ FROM alpine:3.1
 RUN apk add --update python py-pip
 
 # Install app dependencies
-RUN pip install Flask
+RUN pip install globus_sdk
 
 # Bundle app source
-COPY /src/hello-world.py /src/hello-world.py
+COPY /src/PetrelScanner.py /src/globus_connect.py
 
-CMD ["python", "/src/hello-world.py"]
+CMD ["python", "/src/globus_connect.py"]
