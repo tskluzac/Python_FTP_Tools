@@ -1,6 +1,4 @@
-import csv, os
 from ftplib import FTP
-import pandas as pd
 import globus_connect, globus_sdk
 
 #### USAGE HERE ####
@@ -17,7 +15,7 @@ ftp = FTP(host) ### connect to FTP
 ### Note: these are just the UUIDs of the endpoints.
 LOCAL_ID = "21a48f1a-f931-11e6-ba95-22000b9a448b"
 PETREL_ID = "45a53408-c797-11e6-9c33-22000a1e3b52"
-LOCAL_PATH = "/home/tskluzac/"
+LOCAL_PATH = "/src/"
 
 ### STEP 1: Connect to the .txt file containing all applicable file information.
 pet_list = "/home/tskluzac/pub8_list.txt"
