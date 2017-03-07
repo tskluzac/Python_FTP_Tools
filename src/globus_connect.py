@@ -8,8 +8,8 @@ from re import compile
 CLIENT_ID = 'a4eb161f-7c0f-486e-ad06-28cc3bf01ce8'
 
 ### Should move these to System Vars for security.
-AUTH_TOKEN = "AQBYuyQ6AAAAAAAEj5ZMjnWX8k8IXuuJUIGqwA-8s1ETu2Y1zf0MB-q7clGlPEv2KfUNMQArEENZepeTM-Vc"
-TRANSFER_TOKEN = "AQBYuyQ6AAAAAAAEj5cXufToCARHFXBMQrBSCN3ODpmGssRRYqXsNDKHyHnq1_HjTgUUu-1ZsBrPe-79ePMY"
+AUTH_TOKEN = "AQBYwYcnAAAAAAAEj5bVzndzwrdhRGIs5Pv2Ovbk2EqDDnaquIxssJa-pYN-Phb3geHkfDL7DAJQxERhsYMD"
+TRANSFER_TOKEN = "AQBYwYcnAAAAAAAEj5cYCaHoxhCN943Sep6KOzzumotUXA3cPcypnENp7jPllU5ZiqfEWY6rb--OnFBJV2SD"
 
 def get_tokens():
 
@@ -47,5 +47,12 @@ def get_my_endpoints():
     for ep in (get_globus_client()).endpoint_search(filter_scope="my-endpoints"):
         print("[{}] {}".format(ep["id"], ep["display_name"]))
 
+
+### Step 1: Run this to see if everything is working okay. Should see list of endpoints.
+#get_my_endpoints()
+
+
+### Step 2: IF NOT, run this and follow the included steps.
+#get_tokens()
 #get_globus_client()
-get_my_endpoints()
+
