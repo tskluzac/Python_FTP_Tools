@@ -20,7 +20,6 @@ PETREL_ID = "45a53408-c797-11e6-9c33-22000a1e3b52"
 LOCAL_PATH = "/home/tskluzac/"
 
 ### STEP 1: Connect to the .txt file containing all applicable file information.
-
 pet_list = "/home/tskluzac/pub8_list.txt"
 
 ### Step 2: Initiate Globus-Transfer from Petrel
@@ -50,9 +49,6 @@ def download_file(tc, endpoint_id, globus_path, file_name, local_path):
 
 tc = transfer_activate()
 
-# Now put this into a loop. "TOUCH AND DELETE".
-
-
 
 def delete_file(tc, local_path, file_name):
 
@@ -69,11 +65,12 @@ def delete_file(tc, local_path, file_name):
     except:
         pass
 
-
-
 #Test files.
 #download_file(tc, PETREL_ID, "/cdiac/cdiac.ornl.gov/pub8/oceans/AMT_data/", "AMT1.txt", "/home/tskluzac/")
 #delete_file(tc, "/home/tskluzac/", "AMT1.txt")
+
+
+# Now put this into a loop. "TOUCH AND DELETE".
 
 def petrel_scan(tc, endpoint_id, start_file_number, local_path):
     #Scan all files in .txt file..
@@ -88,7 +85,7 @@ def petrel_scan(tc, endpoint_id, start_file_number, local_path):
 
             download_file(tc, PETREL_ID, globus_path, file_name, LOCAL_PATH)
             print("File downloaded.")
-            #TODO: EXTRACT SCHEMA INSTRUCTION. 
+            #TODO: EXTRACT SCHEMA INSTRUCTION.
             delete_file(tc, LOCAL_PATH, file_name)
             print("File deleted.")
 

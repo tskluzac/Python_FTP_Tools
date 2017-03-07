@@ -5,7 +5,7 @@ import random
 
 def  writer(filepath_size_array, path):
 
-    outputfile = "/home/tskluzac/PycharmProjects/CDIAC_scraper/cdiac_site_"
+    outputfile = "/home/tskluzac/Downloads/data_"
 
     path = path.replace("/","")
 
@@ -18,9 +18,10 @@ def  writer(filepath_size_array, path):
             filesize = item[1]
             print(filesize)
 
-            with open(outputfile + path + '.csv', 'a') as summary:
-                summary.write(str(filename) + ',' +
-                          str(filesize) + '\n')
+            if (".zip" in filename) or (".tar" in filename) or (".Z" in filename):
+                with open(outputfile + path + '.csv', 'a') as summary:
+                    summary.write(str(filename) + ',' +
+                            str(filesize) + '\n')
 
     print("CSV " + outputfile + " Finished")
 
