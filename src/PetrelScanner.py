@@ -83,10 +83,10 @@ def petrel_scan(tc, endpoint_id, start_file_number, local_path):
 
             extension = file_name.split('.', 1)[1].strip() if '.' in file_name else "no extension"
 
-            download_file(tc, PETREL_ID, globus_path, file_name, LOCAL_PATH)
+            #download_file(tc, PETREL_ID, globus_path, file_name, LOCAL_PATH)
             print("File downloaded.")
             #TODO: EXTRACT SCHEMA INSTRUCTION.
-            delete_file(tc, LOCAL_PATH, file_name)
+            #delete_file(tc, LOCAL_PATH, file_name)
             print("File deleted.")
 
 #tc = transfer_activate()
