@@ -17,10 +17,11 @@ ftp = FTP(host) ### connect to FTP
 ### Note: these are just the UUIDs of the endpoints.
 LOCAL_ID = "21a48f1a-f931-11e6-ba95-22000b9a448b"
 PETREL_ID = "45a53408-c797-11e6-9c33-22000a1e3b52"
+LOCAL_PATH = "/home/tskluzac/"
 
 ### STEP 1: Connect to the .txt file containing all applicable file information.
 
-
+pet_list = "/home/tskluzac/pub8_list.txt"
 
 ### Step 2: Initiate Globus-Transfer from Petrel
 def transfer_activate():
@@ -38,31 +39,59 @@ def transfer_activate():
 
 def download_file(tc, endpoint_id, globus_path, file_name, local_path):
     # print("downloading file {}".format(globus_path + file_name))
-    tdata = globus_sdk.TransferData(tc, endpoint_id, LOCAL_ID)
-    tdata.add_item(globus_path + file_name, local_path + file_name)
+    down_ins = globus_sdk.TransferData(tc, endpoint_id, LOCAL_ID)
+    down_ins.add_item(globus_path + file_name, local_path + file_name)
 
-    result = tc.submit_transfer(tdata)
+    result = tc.submit_transfer(down_ins)
 
-    while not tc.task_wait(result["task_id"], polling_interval=1, timeout=60):
+    while not tc.task_wait(result["task_id"], polling_interval=1, timeout=20): #Need to speed up the wait-times.
         pass
         # print("waiting for download: {}".format(globus_path + file_name))
 
 tc = transfer_activate()
 
 # Now put this into a loop. "TOUCH AND DELETE".
-#download_file(tc,PETREL_ID, "/cdiac/cdiac.ornl.gov/pub8/oceans/AMT_data/", "AMT1.txt", "/home/tskluzac/")
 
 
 
 def delete_file(tc, local_path, file_name):
-    print("deleting file {}".format(local_path + file_name))
-    ddata = globus_sdk.DeleteData(tc, LOCAL_ID)
 
-    ddata.add_item(local_path + file_name)
+    print("Deleting: {}".format(local_path + file_name))
 
-    # # Run in case the endpoint deactivated.
-    # tc.endpoint_autoactivate(endpoint_id)
+    try:
+        del_ins = globus_sdk.DeleteData(tc, LOCAL_ID)
+        del_ins.add_item(local_path + file_name)
 
-    result = tc.submit_delete(ddata)
+        # # Run in case the endpoint deactivated.
+        # tc.endpoint_autoactivate(endpoint_id)
 
+        result = tc.submit_delete(del_ins)
+    except:
+        pass
+
+
+
+#Test files.
+#download_file(tc, PETREL_ID, "/cdiac/cdiac.ornl.gov/pub8/oceans/AMT_data/", "AMT1.txt", "/home/tskluzac/")
 #delete_file(tc, "/home/tskluzac/", "AMT1.txt")
+
+def petrel_scan(tc, endpoint_id, start_file_number, local_path):
+    #Scan all files in .txt file..
+
+    with open(pet_list) as f:
+        for line in f:
+            full_file_name = line
+            globus_path, file_name = full_file_name.strip().rsplit("/", 1)
+            globus_path += "/"
+
+            extension = file_name.split('.', 1)[1].strip() if '.' in file_name else "no extension"
+
+            download_file(tc, PETREL_ID, globus_path, file_name, LOCAL_PATH)
+            print("File downloaded.")
+            #TODO: EXTRACT SCHEMA INSTRUCTION. 
+            delete_file(tc, LOCAL_PATH, file_name)
+            print("File deleted.")
+
+#tc = transfer_activate()
+
+petrel_scan(tc, PETREL_ID, 1, LOCAL_PATH)
