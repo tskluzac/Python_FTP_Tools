@@ -7,6 +7,6 @@ RUN apk add --update python py-pip
 RUN pip install globus_sdk
 
 # Bundle app source
-COPY /src/PetrelScanner.py /src/globus_connect.py
+COPY /src/globus_connect.py /src/globus_connect.py
 
 CMD ["python", "/src/globus_connect.py"]
