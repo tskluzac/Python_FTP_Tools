@@ -7,7 +7,7 @@ RUN apk add --update python py-pip
 RUN pip install Flask
 
 # Bundle app source
-COPY hello-world.py /src/hello-world.py
+COPY hello-world.py /hello-world.py
 
 EXPOSE  8000
-CMD ["python", "/src/hello-world.py", "-p 8000"]
+CMD ["python", "/hello-world.py", "-p 8000"]
