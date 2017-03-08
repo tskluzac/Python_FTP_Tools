@@ -18,7 +18,7 @@ PETREL_ID = "45a53408-c797-11e6-9c33-22000a1e3b52"
 LOCAL_PATH = "/src/"
 
 ### STEP 1: Connect to the .txt file containing all applicable file information.
-pet_list = "/home/tskluzac/pub8_list.txt"
+pet_list = "/src/pub8_list.txt"
 
 ### Step 2: Initiate Globus-Transfer from Petrel
 def transfer_activate():
