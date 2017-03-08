@@ -10,5 +10,6 @@ RUN pip install globus_sdk
 # Bundle app source
 COPY /src/globus_connect.py /src/globus_connect.py
 COPY /src/PetrelScanner.py /src/PetrelScanner.py
+COPY /src/pub8_list.txt
 
 CMD ["python", "/src/PetrelScanner.py"]
