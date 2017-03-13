@@ -5,8 +5,8 @@ import globus_sdk
 CLIENT_ID = 'a4eb161f-7c0f-486e-ad06-28cc3bf01ce8'
 
 ### Should move these to System Vars for security.
-AUTH_TOKEN = "AQBYwYcnAAAAAAAEj5bVzndzwrdhRGIs5Pv2Ovbk2EqDDnaquIxssJa-pYN-Phb3geHkfDL7DAJQxERhsYMD"
-TRANSFER_TOKEN = "AQBYwYcnAAAAAAAEj5cYCaHoxhCN943Sep6KOzzumotUXA3cPcypnENp7jPllU5ZiqfEWY6rb--OnFBJV2SD"
+AUTH_TOKEN = "AQBYyKFUAAAAAAAEj5Yn-UNvikrKQPnZ-LjxLyL43TlUXC0oyGZfsZ6cIrEnn1Vo5OqS-9acwH30OHl0VACd"
+TRANSFER_TOKEN = "AQBYyKFUAAAAAAAEj5ecjHcfZ0R2j-jN2Ax9QBZEI01_BDHztzHtqlU-3fY3Tj9xW1C8buYoM68DzqHue-v2"
 
 def get_tokens():
 
