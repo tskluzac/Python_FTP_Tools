@@ -7,7 +7,9 @@ the file from the OS.  This is useful for commodity machines to save space.  '''
 
 # import NAME_OF_YOUR_MODULE
 
+success_num = 0
 fail_num = 0
+
 with open('cdiac_images2017.txt', 'rb') as f:
 
     for line in f:
@@ -15,25 +17,30 @@ with open('cdiac_images2017.txt', 'rb') as f:
         try:
             url = "ftp://cdiac.ornl.gov" + line.rstrip()
             filename = wget.download(url)
+            success_num += 1
+            print("...Successful Download Number " + str(success_num))
 
-            ###########################################
+       	###########################################
 
-        except:
+        except: #TODO: Make less vague.
+            #This whole Except statement is here to account for download failures, network interrupts, and non-ascii chars in the path.  
             fail_num +=1
-            print("Dead-Paths: " + str(fail_num))
+            print("Dead Path Number " + str(fail_num))
 
             continue #Break loop iteration.
 
 
         ################# DO YOUR COMPUTE #####################
+        
+
+       #Call your functions in here.  
 
 
 
-       print(filename)
 
         #######################################################
 
-        #Bye, Felicia.
+        #Bye, Felicia. (Delete the file)
         os.remove(filename)
 
 
