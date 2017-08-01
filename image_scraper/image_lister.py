@@ -16,18 +16,18 @@ with open('fullData.csv', 'rb') as f:
     for line in f:
 
         #Get the path and force to lower-case.
-        path = line.split(",")[0].lower()
+        path_orig = line.split(",")[0]
+        path = path_orig.lower()
 
         #Add image filetypes to this set that you'd like to extract.
         img_set = {'bmp', 'jpg', 'png', 'gif'}
         extension = path.split('.')[-1] #Just gets the file extension from the path.
 
         if extension in img_set: #NoneTypes automatically disqualified in this if-statement, so no concern here.
-            pic_files.append(path)
+            pic_files.append(path_orig)
 
         else:
             pass
-
 # Write to the textfile.
 with open('cdiac_images2017.txt', 'wb') as g:
 
